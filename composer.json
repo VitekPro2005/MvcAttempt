@@ -1,0 +1,23 @@
+{
+    "version": "1.0",
+    "name": "user/engine",
+    "autoload": {
+        "files": [
+            "core/functions.php",
+            "core/InitDb.php",
+            "models/posts.php",
+            "core/render.php",
+            "core/controller.php",
+            "validators/posts.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "VitekPro2005",
+            "email": "viktorshevelev224@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.4"
+    }
+}
