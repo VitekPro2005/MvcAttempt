@@ -58,7 +58,7 @@ function saveValidate($title, $content, $category_id, $messages, $id) {
     return true;
 }
 
-function accoutValidate($nickname, $email, $password) {
+function accountValidate($nickname, $email, $password) {
     if (!$nickname) {
         $_SESSION['errors']['nickname'] = 'Введите никнейм для регистрации';
     }

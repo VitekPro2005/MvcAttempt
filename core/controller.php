@@ -48,7 +48,7 @@ switch ($routeAction) {
             $email = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
-            if (!accoutValidate($nickname, $password, $email)) {
+            if (!accountValidate($nickname, $password, $email)) {
                 header('Location: /register');
                 exit;
             }
@@ -106,7 +106,7 @@ switch ($routeAction) {
     break;    
     case 'logout':
         if (isset($_SESSION['nickname'])) {
-            clearUserToken($nickname);
+            clearUserToken($_SESSION['nickname']);
         }
     
         setcookie('token', '', time() - 3600, '/');
@@ -165,6 +165,7 @@ switch ($routeAction) {
         ]);
         break;
     case 'save':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = (int)$_POST["id"] ?? 0;
         $title = trim($_POST['title'] ?? '');
         $content = trim($_POST['content'] ?? '');
@@ -185,6 +186,7 @@ switch ($routeAction) {
         $_SESSION['messages'][] = $messages['update'];
         header('Location: /posts');
         exit();
+        }
         break;
 
     case 'delete':
@@ -197,6 +199,12 @@ switch ($routeAction) {
             $_SESSION['errors'][] = $messages['post'];
             header('Location: /posts');
             exit;
+        } else {
+            $statement = $db->prepare("DELETE FROM posts WHERE id = ?");
+            $statement->execute([$id]);
+            $_SESSION['messages'][] = $messages['delete'];
+            header('Location: /posts');
+            exit();
         }
         break;
         }   
@@ -212,7 +220,7 @@ switch ($routeAction) {
         $viewFile = __DIR__ . '/../views/' . $routeAction . '.php';
     
         if (file_exists($viewFile)) {
-            render($routeaction);
+            render($routeAction);
         } else {
             http_response_code(404);
             render('404');
