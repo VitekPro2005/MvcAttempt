@@ -7,7 +7,6 @@ $segments = explode('/', $uri);
 $page = !empty($segments[0]) ? $segments[0] : 'index';
 $subPage = $segments[1] ?? '';
 $id = (int)($segments[2] ?? 0);
-echo $segments[0];
 
 $routeAction = match ($page) {
     'posts' => match ($subPage) {
