@@ -6,9 +6,8 @@
             "core/functions.php",
             "core/InitDb.php",
             "models/posts.php",
-            "core/render.php",
-            "core/controller.php",
-            "validators/posts.php"
+            "validators/posts.php",
+            "core/render.php"
         ]
     },
     "authors": [

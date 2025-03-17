@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../partials/errors.php'; ?>
 
-<form method="POST" action="/posts/update">
+<form method="POST" action="/posts/update/<?= $post['id'] ?? '' ?>">
     <input type="hidden" name="id" value="<?= $post['id'] ?? '' ?>">
     
     <div class="mb-3">

@@ -7,7 +7,7 @@
         <div class="card-header">
             <?= htmlspecialchars($post['title']) ?>
             <span class="badge bg-secondary"><?= htmlspecialchars($post['category_title']) ?></span>
-            <a href="/posts/edit/<?= $post['id'] ?>" class="btn btn-warning">Изменить</a>
+            <a href="/posts/update/<?= $post['id'] ?>" class="btn btn-warning">Изменить</a>
             <form method="POST" action="/posts/delete" class="d-inline">
                 <input type="hidden" name="id" value="<?= $post['id'] ?>">
                 <button type="submit" class="btn btn-danger">Удалить</button>
